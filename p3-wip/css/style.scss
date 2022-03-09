@@ -159,6 +159,7 @@ $title-font: "Shrikhand";
     text-align: left;
     padding-left: 25px;
     padding-top: 30px;
+    padding-bottom: 145px;
 }
 
 .restaurants__grid {
@@ -229,21 +230,24 @@ $title-font: "Shrikhand";
 }
 
 
-
-
 .footer__container {
     width: 100%;
-    height: auto;
-    padding-left: 20px;
-    background-color: black;
+    height: 325px;
+    padding-left: 35px;
+    background-color:  #282828;
     color: white;
-    margin-top: 0px;
+    margin-top: -26px;
+    padding-top: 20px;
     & ul {
         width: 100%;
         font-family: $text-font;
         font-size: 22px;
         list-style: none;
-        line-height: 30px;
+        line-height: 40px;
+    }
+    & i{
+        width: 30px;
+        height: 30px;
     }
 }
 
