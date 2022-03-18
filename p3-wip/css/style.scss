@@ -1,258 +1,412 @@
-//variables 
-$primary-color: #9356DC;
-$secondary-color: #FF79DA;
-$tertiary-color: #99E2D0;
+//variables
+$primary-color: #9356dc;
+$secondary-color: #ff79da;
+$tertiary-color: #99e2d0;
 $accent-color: #f2f2f2;
-$accent-color2: lightgrey;
+$accent-color2: #d3d3d3;
+$accent-color2-alt: #808080;
 
 $text-font: "Roboto";
 $title-font: "Shrikhand";
 
+// mixins
+
+@mixin background-opacity($color, $opacity) {
+  background: rgba($color, $opacity);
+}
+
+@mixin color-opacity($color, $opacity) {
+  color: rgba($color, $opacity);
+}
+
+//keyframes
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes hidden {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes lighten {
+  to {
+    @include background-opacity($primary-color, 0.15);
+  }
+}
+
+@keyframes brighten {
+  to {
+    @include background-opacity($secondary-color, 0.8);
+  }
+}
+
+@keyframes brighten-text {
+  to {
+    @include color-opacity($primary-color, 1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: $primary-color;
+    stroke: $primary-color;
+    opacity: 1;
+  }
+}
+
 
 //start of the mobile css
 * {
-    box-sizing: border-box;
-    width: 600px;
-    padding: 0px 0px;
+  box-sizing: border-box;
+  width: 600px;
+  padding: 0px 0px;
 }
 
-.header__logo-container {
-    width: 100%;
-    height: 135px;
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
-    margin-bottom: 6px;
-    & img {
-        width: 450px;
-        padding-left: 135px;
-        padding-top: 50px;
-    }
+//page loader
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  background-color: $accent-color;
+  z-index: 1;
+  
+  &::after {
+    content: "";
+    width: 150px;
+    height: 150px;
+    border: 25px solid $tertiary-color;
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: loading 0.5s linear infinite;
+  }
 }
 
-#header__location-container {
-    width: 100%;
-    height: auto;
-    background-color: lightgrey;
-    padding: 5px 0;
-    display: inline-flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: baseline;
-   
-    & p {
-        width: 40%;
-        font-family: $text-font;
-        font-size: 25px;
-        text-align: center;
-        position: relative;
-        right: 50px;
-    }
-}
-
-#location-icon{
-    width: 13%;
-    height: auto;
-
-    & i{
-        font-size: 27px;
-        width: 30px;
-        height: 30px;
-    }
-}
-
-.container {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    padding-bottom: 75px;
-    padding-top: 10px;
-    background-color: $accent-color;
-}
-
-.container__title {
-    width: 100%;
-    font-size: 36px;
-    font-family: $text-font;
-    padding-top: 5px;
-    padding-bottom: 10px;
+.loader--hidden {
+    opacity: 1;
+    animation: hidden .65s ease-in-out forwards 1s;
     
 }
 
-#booking__text {
-    width: 90%;
-    font-size: 27px;
-    font-family: $text-font;
-    padding-left: 80px;
-    padding-bottom: 10px;
 
+// logo css
+.header__logo-container {
+  width: 100%;
+  height: 135px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 6px;
+  & img {
+    width: 450px;
+    padding-left: 135px;
+    padding-top: 50px;
+  }
+}
+
+//location indicator below logo css
+#header__location-container {
+  width: 100%;
+  height: auto;
+  background-color: $accent-color2;
+  padding: 5px 0;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: baseline;
+
+  & p {
+    width: 40%;
+    font-family: $text-font;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    right: 50px;
+  }
+}
+
+#location-icon {
+  width: 13%;
+  height: auto;
+
+  & i {
+    font-size: 27px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+//generalized class for container and title for it
+.container {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding-bottom: 75px;
+  padding-top: 10px;
+  background-color: $accent-color;
+}
+
+.container__title {
+  width: 100%;
+  font-size: 36px;
+  font-family: $text-font;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+//section below location indicator
+#booking__text {
+  width: 90%;
+  font-size: 27px;
+  font-family: $text-font;
+  padding-left: 80px;
+  padding-bottom: 10px;
 }
 
 .explore-btn {
-    width: 50%;
-    height: 80px;
-    border-radius: 50px;
-    border: 2px solid $secondary-color;
-    font-size: 22px;
-    font-family: $text-font;
-    font-weight: 700;
-    color: #ffff;
-    background-color: $secondary-color;
-
+  width: 50%;
+  height: 80px;
+  border-radius: 50px;
+  border: 2px solid $secondary-color;
+  font-size: 22px;
+  font-family: $text-font;
+  font-weight: 700;
+  color: #ffff;
+  background-color: $secondary-color;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+  &:hover {
+    animation: brighten 0.5s linear forwards;
+  }
 }
 
+// how it works section
 #how-it-works.container {
-    text-align: left;
-    margin-top: 25px;
-    padding-left: 25px;
-    padding-top: 5px;
-    background-color: white;
+  text-align: left;
+  margin-top: 25px;
+  padding-left: 25px;
+  padding-top: 5px;
+  background-color: white;
 }
 
 .how-it-works__btn--grid {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 45px;
-    padding-left: 20px;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 45px;
+  padding-left: 20px;
 }
 
 .select-btn {
-    width: 95%;
-    height: 100px;
-    border-radius: 32px;
-    border: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: whitesmoke;
-    padding-left: 35px;
-    padding-top: 15px;
-    display: inline-flex;
-    align-items: baseline;
-    gap: 30px;
+  width: 95%;
+  height: 100px;
+  border-radius: 32px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: whitesmoke;
+  padding-left: 35px;
+  padding-top: 15px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0px;
 
-    & i {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-        color: grey;
-    }
-    & p {
-        width: 100%;
-        font-family: $text-font;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: left;
-    }
-
-    &:hover {
-        background-color: $primary-color;
-    }
-
-    &:hover i{
-        color: $secondary-color;
-    }
-        
-   
-
-}
-
-
-#restaurants.container {
-    text-align: left;
-    padding-left: 25px;
-    padding-top: 30px;
-    padding-bottom: 145px;
-}
-
-.restaurants__grid {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 30px;
-    padding-left: 10px;
-
-}
-
-.restaurants__card {
-    width: 95%;
-    height: 420px;
-    background-color: white;
-    border-radius: 25px;
-}
-
-.card-header {
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    & img {
-        width:  538px;
-        height: 289px;
-        object-fit: cover;
-        border-radius: 20px 20px 0 0;
-    }
-}
-
-.card-footer {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: baseline;
-    & i {
-        width: 40px;
-        height: 40px;
-        font-size: 44px;
-        color: grey;
-        align-self: center;
-        position: relative;
-        top: -14px;
-    }
-
-}
-
-.card__description {
-    width: 85%;
-    padding-left: 20px;
-}
-
-.card__title {
-    width: 100%;
-    font-family: $text-font;
-    font-size: 29px;
-    margin-bottom: 0;
-}
-
-.card__text {
+  & i {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    color: grey;
+    position: relative;
+    right: 28px;
+  }
+  & p {
     width: 100%;
     font-family: $text-font;
     font-size: 24px;
-    color: grey;
-    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  &:hover {
+    animation: lighten 0.6s linear forwards;
+  }
+
+  &:hover i {
+    animation: brighten-text 0.6s linear forwards;
+  }
 }
 
+.circle-icon {
+  background-color: $primary-color;
+  width: 38px;
+  height: 34px;
+  border-radius: 25px;
+  align-self: center;
+  color: white;
+  font-family: $text-font;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  right: 50px;
+  top: -4px;
+}
 
+// section where restaurant  cards located
+#restaurants.container {
+  text-align: left;
+  padding-left: 25px;
+  padding-top: 30px;
+  padding-bottom: 145px;
+}
+
+.restaurants__grid {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 30px;
+  padding-left: 10px;
+}
+
+.restaurants__card {
+  width: 95%;
+  height: 410px;
+  background-color: white;
+  border-radius: 25px;
+  display: block;
+  text-decoration: none;
+}
+
+.new-overlay {
+  width: 95px;
+  height: 35px;
+  padding-top: 5px;
+  background: $tertiary-color;
+  color: $accent-color2-alt;
+  text-align: center;
+  font-family: $text-font;
+  font-size: 20px;
+  position: relative;
+  bottom: 255px;
+  left: 425px;
+}
+
+.card-header {
+  width: 100%;
+  height: 280px;
+  padding: 0;
+  margin: 0;
+  & img {
+    width: 538px;
+    height: 279px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+.card-footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  & i {
+    width: 43px;
+    height: 40px;
+    font-size: 44px;
+    color: grey;
+    align-self: center;
+    position: relative;
+    top: -14px;
+  }
+}
+
+//svg heart styling
+.heart-icon {
+  fill: transparent;
+  stroke: grey;
+  stroke-width: 48px;
+  width: 43px;
+  height: 40px;
+  align-self: center;
+  position: relative;
+  top: -11px;
+}
+
+svg {
+  overflow: visible;
+  width: 43px;
+}
+
+.heart-main:hover {
+  animation: fade-in 0.3s linear forwards;
+}
+
+.card__description {
+  width: 85%;
+  padding-left: 20px;
+}
+
+.card__title {
+  width: 100%;
+  font-family: $text-font;
+  font-size: 29px;
+  margin-bottom: 0;
+  color: black;
+}
+
+.card__text {
+  width: 100%;
+  font-family: $text-font;
+  font-size: 24px;
+  color: grey;
+  margin-top: 10px;
+}
+
+// footer styling
 .footer__container {
+  width: 100%;
+  height: 325px;
+  padding-left: 35px;
+  background-color: #282828;
+  color: white;
+  margin-top: -26px;
+  padding-top: 20px;
+  & ul {
     width: 100%;
-    height: 325px;
-    padding-left: 35px;
-    background-color:  #282828;
+    font-family: $text-font;
+    font-size: 22px;
+    list-style: none;
+    line-height: 40px;
+  }
+  & i {
+    width: 30px;
+    height: 30px;
+  }
+
+  & a:link,
+  & a:visited,
+  & a:active,
+  & a:hover {
+    text-decoration: none;
     color: white;
-    margin-top: -26px;
-    padding-top: 20px;
-    & ul {
-        width: 100%;
-        font-family: $text-font;
-        font-size: 22px;
-        list-style: none;
-        line-height: 40px;
-    }
-    & i{
-        width: 30px;
-        height: 30px;
-    }
+  }
 }
 
 #footer__logo {
-    font-family: $title-font;
-    font-size: 28px;
-    width: 100%;
+  font-family: $title-font;
+  font-size: 28px;
+  width: 100%;
 }

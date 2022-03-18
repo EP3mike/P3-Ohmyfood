@@ -1,7 +1,81 @@
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes hidden {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes lighten {
+  to {
+    background: rgba(147, 86, 220, 0.15);
+  }
+}
+
+@keyframes brighten {
+  to {
+    background: rgba(255, 121, 218, 0.8);
+  }
+}
+
+@keyframes brighten-text {
+  to {
+    color: #9356dc;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #9356dc;
+    stroke: #9356dc;
+    opacity: 1;
+  }
+}
+
 * {
   box-sizing: border-box;
   width: 600px;
   padding: 0px 0px;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  z-index: 1;
+}
+
+.loader::after {
+  content: "";
+  width: 150px;
+  height: 150px;
+  border: 25px solid #99e2d0;
+  border-top-color: #9356dc;
+  border-radius: 50%;
+  animation: loading 0.5s linear infinite;
+}
+
+.loader--hidden {
+  opacity: 1;
+  animation: hidden .65s ease-in-out forwards 1s;
 }
 
 .header__logo-container {
@@ -20,7 +94,7 @@
 #header__location-container {
   width: 100%;
   height: auto;
-  background-color: lightgrey;
+  background-color: #d3d3d3;
   padding: 5px 0;
   display: inline-flex;
   flex-flow: row nowrap;
@@ -77,12 +151,17 @@
   width: 50%;
   height: 80px;
   border-radius: 50px;
-  border: 2px solid #FF79DA;
+  border: 2px solid #ff79da;
   font-size: 22px;
   font-family: "Roboto";
   font-weight: 700;
   color: #ffff;
-  background-color: #FF79DA;
+  background-color: #ff79da;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.explore-btn:hover {
+  animation: brighten 0.5s linear forwards;
 }
 
 #how-it-works.container {
@@ -112,7 +191,7 @@
   padding-top: 15px;
   display: inline-flex;
   align-items: baseline;
-  gap: 30px;
+  gap: 0px;
 }
 
 .select-btn i {
@@ -120,6 +199,8 @@
   height: 40px;
   font-size: 24px;
   color: grey;
+  position: relative;
+  right: 28px;
 }
 
 .select-btn p {
@@ -131,11 +212,26 @@
 }
 
 .select-btn:hover {
-  background-color: #9356DC;
+  animation: lighten 0.6s linear forwards;
 }
 
 .select-btn:hover i {
-  color: #FF79DA;
+  animation: brighten-text 0.6s linear forwards;
+}
+
+.circle-icon {
+  background-color: #9356dc;
+  width: 38px;
+  height: 34px;
+  border-radius: 25px;
+  align-self: center;
+  color: white;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  right: 50px;
+  top: -4px;
 }
 
 #restaurants.container {
@@ -155,21 +251,37 @@
 
 .restaurants__card {
   width: 95%;
-  height: 420px;
+  height: 410px;
   background-color: white;
   border-radius: 25px;
+  display: block;
+  text-decoration: none;
+}
+
+.new-overlay {
+  width: 95px;
+  height: 35px;
+  padding-top: 5px;
+  background: #99e2d0;
+  color: #808080;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 20px;
+  position: relative;
+  bottom: 255px;
+  left: 425px;
 }
 
 .card-header {
   width: 100%;
-  height: auto;
+  height: 280px;
   padding: 0;
   margin: 0;
 }
 
 .card-header img {
   width: 538px;
-  height: 289px;
+  height: 279px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
@@ -183,13 +295,33 @@
 }
 
 .card-footer i {
-  width: 40px;
+  width: 43px;
   height: 40px;
   font-size: 44px;
   color: grey;
   align-self: center;
   position: relative;
   top: -14px;
+}
+
+.heart-icon {
+  fill: transparent;
+  stroke: grey;
+  stroke-width: 48px;
+  width: 43px;
+  height: 40px;
+  align-self: center;
+  position: relative;
+  top: -11px;
+}
+
+svg {
+  overflow: visible;
+  width: 43px;
+}
+
+.heart-main:hover {
+  animation: fade-in 0.3s linear forwards;
 }
 
 .card__description {
@@ -202,6 +334,7 @@
   font-family: "Roboto";
   font-size: 29px;
   margin-bottom: 0;
+  color: black;
 }
 
 .card__text {
@@ -233,6 +366,14 @@
 .footer__container i {
   width: 30px;
   height: 30px;
+}
+
+.footer__container a:link,
+.footer__container a:visited,
+.footer__container a:active,
+.footer__container a:hover {
+  text-decoration: none;
+  color: white;
 }
 
 #footer__logo {
