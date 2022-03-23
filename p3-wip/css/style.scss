@@ -45,7 +45,7 @@ $title-font: "Shrikhand";
 
 @keyframes brighten {
   to {
-    @include background-opacity($secondary-color, 0.8);
+    @include background-opacity($secondary-color, 0.75);
   }
 }
 
@@ -112,11 +112,33 @@ $title-font: "Shrikhand";
   height: 135px;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 6px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  
   & img {
-    width: 450px;
-    padding-left: 135px;
-    padding-top: 50px;
+    width: 350px;
+    height: auto;
+    padding-top: 35px;
   }
+}
+
+// link to hompage 
+.header__redirect {
+    display: block;
+    text-decoration: none;
+    width: 5%;
+    height: auto;
+    padding-top: 45px;
+    position: relative;
+    right: 75px;
+    & i {
+        width: 50px;
+        height: 50px;
+        color: black;
+        font-size: 34px;
+    }
 }
 
 //location indicator below logo css
@@ -151,6 +173,16 @@ $title-font: "Shrikhand";
   }
 }
 
+//menu restaruant preview 
+.header__preview {
+    width: 100%;
+    height: auto;
+
+    & img {
+        width: 100%;
+    }
+}
+
 //generalized class for container and title for it
 .container {
   width: 100%;
@@ -167,6 +199,14 @@ $title-font: "Shrikhand";
   font-family: $text-font;
   padding-top: 5px;
   padding-bottom: 10px;
+}
+
+.container__title--alt {
+    width: 80%;
+    font-family: $title-font;
+    text-align: left;
+    padding-left: 25px;
+    font-size: 38px;
 }
 
 //section below location indicator
@@ -373,6 +413,20 @@ svg {
   font-size: 24px;
   color: grey;
   margin-top: 10px;
+}
+
+//Restaurant invidvual menu css
+#restaurant__menu.container {
+    border-radius: 70px 70px 0 0;
+    // position: relative;
+    // z-index: -1;
+}
+
+.restaurant__menu--header {
+    width: 100%;
+    display: inline-flex;
+    gap: 25px;
+
 }
 
 // footer styling
