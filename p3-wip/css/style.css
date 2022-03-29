@@ -58,7 +58,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: center;
   background-color: #f2f2f2;
   z-index: 1;
 }
@@ -74,8 +73,16 @@
 }
 
 .loader--hidden {
+  width: 100%;
+  height: 100vh;
   opacity: 1;
   animation: hidden .65s ease-in-out forwards 1s;
+}
+
+.reposition {
+  position: relative;
+  bottom: 65px;
+  margin-bottom: 0;
 }
 
 .header__logo-container {
@@ -149,7 +156,9 @@
 }
 
 .header__preview img {
-  width: 100%;
+  object-fit: cover;
+  width: 600px;
+  height: 400px;
 }
 
 .container {
@@ -196,10 +205,12 @@
   color: #ffff;
   background-color: #ff79da;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .explore-btn:hover {
-  animation: brighten 0.5s linear forwards;
+  animation: brighten 0.3s ease-in-out forwards;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 #how-it-works.container {
@@ -230,6 +241,7 @@
   display: inline-flex;
   align-items: baseline;
   gap: 0px;
+  cursor: pointer;
 }
 
 .select-btn i {
@@ -384,13 +396,63 @@ svg {
 }
 
 #restaurant__menu.container {
-  border-radius: 70px 70px 0 0;
+  border-radius: 50px 50px 0 0;
+  text-align: left;
+  margin-bottom: -65px;
+}
+
+#restaurant__menu.container .menu__title {
+  font-size: 23px;
+}
+
+#restaurant__menu.container .menu__title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  padding-bottom: 8px;
+  border-bottom: 5px solid #99e2d0;
 }
 
 .restaurant__menu--header {
   width: 100%;
   display: inline-flex;
   gap: 25px;
+}
+
+.restaurant__menu--grid {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 22px;
+  padding-left: 30px;
+  padding-bottom: 50px;
+}
+
+.restaurant__menu--card {
+  width: 95%;
+  height: 100px;
+  background-color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.menu__description {
+  width: 100%;
+  padding-left: 0px;
+  padding-top: 0;
+}
+
+.menu__description p {
+  font-size: 21px;
+  width: 80%;
+  padding-left: 10px;
+}
+
+.order-btn {
+  align-self: center;
+  margin-top: 40px;
+  position: relative;
+  right: 10px;
 }
 
 .footer__container {
