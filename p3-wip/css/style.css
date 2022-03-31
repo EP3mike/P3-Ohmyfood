@@ -43,6 +43,17 @@
   }
 }
 
+@keyframes fade-in-loading {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: tranlateY(0px);
+  }
+}
+
 * {
   box-sizing: border-box;
   width: 600px;
@@ -52,14 +63,15 @@
 .loader {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f2f2f2;
-  z-index: 1;
+  z-index: 9999;
 }
 
 .loader::after {
@@ -73,8 +85,6 @@
 }
 
 .loader--hidden {
-  width: 100%;
-  height: 100vh;
   opacity: 1;
   animation: hidden .65s ease-in-out forwards 1s;
 }
@@ -317,6 +327,7 @@
   text-align: center;
   font-family: "Roboto";
   font-size: 20px;
+  font-weight: strong;
   position: relative;
   bottom: 255px;
   left: 425px;
@@ -402,7 +413,7 @@ svg {
 }
 
 #restaurant__menu.container .menu__title {
-  font-size: 23px;
+  margin-bottom: 8px;
 }
 
 #restaurant__menu.container .menu__title::after {
@@ -428,24 +439,62 @@ svg {
   padding-bottom: 50px;
 }
 
+.restaurant__menu--grid .load-1 {
+  animation: fade-in-loading 1.5s ease-in-out backwards .5s;
+}
+
+.restaurant__menu--grid .load-2 {
+  animation: fade-in-loading 1.5s ease-in-out backwards 1s;
+}
+
+.restaurant__menu--grid .load-3 {
+  animation: fade-in-loading 1.5s ease-in-out backwards 1.5s;
+}
+
+.restaurant__menu--grid .load-4 {
+  animation: fade-in-loading 1.5s ease-in-out backwards 2s;
+}
+
 .restaurant__menu--card {
-  width: 95%;
+  width: 97%;
   height: 100px;
   background-color: white;
   border-radius: 25px;
   cursor: pointer;
+  margin-left: -5px;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .menu__description {
-  width: 100%;
+  display: block;
+  width: 86%;
   padding-left: 0px;
   padding-top: 0;
 }
 
 .menu__description p {
-  font-size: 21px;
-  width: 80%;
-  padding-left: 10px;
+  padding-left: 12px;
+}
+
+.menu__description .menu__item {
+  font-size: 26px;
+  margin-top: 20px;
+}
+
+.menu__description .menu__ingredients {
+  font-size: 22px;
+}
+
+.menu__price {
+  width: 10%;
+  display: block;
+  font-size: 24px;
+  font-family: "Roboto";
+  align-self: center;
+  justify-self: center;
+  position: relative;
+  top: 22px;
 }
 
 .order-btn {
@@ -471,6 +520,10 @@ svg {
   font-size: 22px;
   list-style: none;
   line-height: 40px;
+}
+
+.footer__container ul li {
+  width: 100%;
 }
 
 .footer__container i {
