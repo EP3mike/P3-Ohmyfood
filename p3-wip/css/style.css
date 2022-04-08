@@ -54,10 +54,39 @@
   }
 }
 
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
 * {
   box-sizing: border-box;
   width: 600px;
   padding: 0px 0px;
+}
+
+@media only screen and (min-width: 601px) {
+  html {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: #eeeeee;
+  }
+  body {
+    margin: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 100%;
+  }
 }
 
 .loader {
@@ -212,7 +241,7 @@
   font-size: 22px;
   font-family: "Roboto";
   font-weight: 700;
-  color: #ffff;
+  color: #f2f2f2;
   background-color: #ff79da;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -228,7 +257,7 @@
   margin-top: 25px;
   padding-left: 25px;
   padding-top: 5px;
-  background-color: white;
+  background-color: #ffff;
 }
 
 .how-it-works__btn--grid {
@@ -239,13 +268,13 @@
   padding-left: 20px;
 }
 
-.select-btn {
+.how-it-works__btn {
   width: 95%;
   height: 100px;
   border-radius: 32px;
   border: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   padding-left: 35px;
   padding-top: 15px;
   display: inline-flex;
@@ -254,7 +283,7 @@
   cursor: pointer;
 }
 
-.select-btn i {
+.how-it-works__btn i {
   width: 40px;
   height: 40px;
   font-size: 24px;
@@ -263,7 +292,7 @@
   right: 28px;
 }
 
-.select-btn p {
+.how-it-works__btn p {
   width: 100%;
   font-family: "Roboto";
   font-size: 24px;
@@ -271,11 +300,11 @@
   text-align: left;
 }
 
-.select-btn:hover {
+.how-it-works__btn:hover {
   animation: lighten 0.6s linear forwards;
 }
 
-.select-btn:hover i {
+.how-it-works__btn:hover i {
   animation: brighten-text 0.6s linear forwards;
 }
 
@@ -466,9 +495,26 @@ svg {
   flex-flow: row nowrap;
 }
 
+.restaurant__menu--card:hover .menu__price {
+  text-indent: -40px;
+  transition: text-indent .3s linear;
+}
+
+.restaurant__menu--card:hover .check {
+  width: 20%;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .3s, visibility .3s, width .3s linear;
+  animation: slide-in-left .3s ease-in-out backwards;
+}
+
+.restaurant__menu--card:hover .check i {
+  opacity: 1;
+}
+
 .menu__description {
   display: block;
-  width: 86%;
+  width: 88%;
   padding-left: 0px;
   padding-top: 0;
 }
@@ -483,18 +529,43 @@ svg {
 }
 
 .menu__description .menu__ingredients {
-  font-size: 22px;
+  font-size: 23px;
 }
 
 .menu__price {
-  width: 10%;
-  display: block;
+  width: 9%;
+  display: inline-block;
   font-size: 24px;
   font-family: "Roboto";
   align-self: center;
   justify-self: center;
   position: relative;
   top: 22px;
+  text-indent: 0;
+}
+
+.check {
+  width: 0%;
+  height: auto;
+  text-align: center;
+  border-radius: 0px 25px 25px 0px;
+  background-color: #99e2d0;
+  visibility: hidden;
+  opacity: 0;
+  transition: width 0.3s, visibility 0.3s, opacity 0.3s, height 0.3s ease-in-out;
+  display: flex;
+}
+
+.check i {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  font-size: 35px;
+  font-weight: 900;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s linear;
 }
 
 .order-btn {
