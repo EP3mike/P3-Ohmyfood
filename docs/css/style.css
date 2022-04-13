@@ -54,15 +54,6 @@
   }
 }
 
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(5px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-
 * {
   box-sizing: border-box;
   width: 600px;
@@ -496,7 +487,7 @@ svg {
 }
 
 .restaurant__menu--card:hover .menu__price {
-  text-indent: -40px;
+  text-indent: -30px;
   transition: text-indent .3s linear;
 }
 
@@ -505,15 +496,15 @@ svg {
   visibility: visible;
   opacity: 1;
   transition: opacity .3s, visibility .3s, width .3s linear;
-  animation: slide-in-left .3s ease-in-out backwards;
 }
 
 .restaurant__menu--card:hover .check i {
   opacity: 1;
+  animation: loading 0.3s linear;
 }
 
 .menu__description {
-  display: block;
+  display: inline-block;
   width: 88%;
   padding-left: 0px;
   padding-top: 0;
@@ -524,12 +515,17 @@ svg {
 }
 
 .menu__description .menu__item {
-  font-size: 26px;
+  font-size: 25px;
   margin-top: 20px;
 }
 
 .menu__description .menu__ingredients {
+  width: 90%;
   font-size: 23px;
+  padding-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menu__price {
@@ -541,7 +537,7 @@ svg {
   justify-self: center;
   position: relative;
   top: 22px;
-  text-indent: 0;
+  text-overflow: ellipsis;
 }
 
 .check {
