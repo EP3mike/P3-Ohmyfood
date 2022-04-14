@@ -338,13 +338,16 @@ $title-font: "Shrikhand";
     color: grey;
     position: relative;
     right: 28px;
+    top: 6px;
+    align-self: center;
   }
-  & p {
+  & .btn--text {
     width: 100%;
     font-family: $text-font;
     font-size: 24px;
     font-weight: bold;
     text-align: left;
+    align-self: center;
   }
 
   &:hover {
