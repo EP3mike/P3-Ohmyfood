@@ -86,14 +86,12 @@ $title-font: "Shrikhand";
   padding: 0px 0px;
 }
 
-//desktop and tablet adjustment
+//desktop and tablet adjustment for page
 @media only screen and (min-width: 601px) {
   * {
     max-width: 768px;
     margin: auto;
   }
-  
-
  
 }
 
@@ -128,7 +126,7 @@ $title-font: "Shrikhand";
     
 }
 
-// main reposition class
+// main reposition for individual menu 
 .reposition {
   position: relative;
   bottom: 65px;
@@ -170,6 +168,15 @@ $title-font: "Shrikhand";
     }
 }
 
+//desktop/tablet header adjustment
+@media only screen and (min-width: 601px) {
+   .header__redirect {
+     width: 1%;
+     right: 60px;
+     margin-right: -60px;
+   }
+}
+
 //location indicator below logo css
 #header__location-container {
   width: 100%;
@@ -202,7 +209,7 @@ $title-font: "Shrikhand";
   }
 }
 
-//desktop/tablet styling adjustments
+//desktop/tablet styling adjustments for header
 @media only screen and (min-width: 601px) {
   #header__location-container {
     gap: 0;
@@ -284,6 +291,7 @@ $title-font: "Shrikhand";
   }
 }
 
+//desktop/tablet adjustments for explore area
 @media only screen and (min-width: 601px) {
   #booking__text {
     padding-left: 8px;
@@ -364,8 +372,13 @@ $title-font: "Shrikhand";
   top: -4px;
 }
 
+//desktop/adjustments for how it works section
 @media only screen and (min-width: 601px) {
-  
+  .how-it-works__btn {
+    & i {
+      top: 6px;
+    }
+  }
 }
 
 // section for restaurant cards located
@@ -393,6 +406,20 @@ $title-font: "Shrikhand";
   text-decoration: none;
 }
 
+// styling for cards used by restaurant
+.card-header {
+  width: 100%;
+  height: 280px;
+  padding: 0;
+  margin: 0;
+  & img {
+    width: 538px;
+    height: 279px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+  }
+}
+
 // new restaurant indicator
 .new-overlay {
   width: 95px;
@@ -409,35 +436,21 @@ $title-font: "Shrikhand";
   left: 425px;
 }
 
-// styling for cards used by restaurant
-.card-header {
-  width: 100%;
-  height: 280px;
-  padding: 0;
-  margin: 0;
-  & img {
-    width: 538px;
-    height: 279px;
-    object-fit: cover;
-    border-radius: 20px 20px 0 0;
-  }
-}
-
 .card-footer {
   width: 100%;
   height: auto;
   display: flex;
   flex-flow: row nowrap;
   align-items: baseline;
-  & i {
-    width: 43px;
-    height: 40px;
-    font-size: 44px;
-    color: grey;
-    align-self: center;
-    position: relative;
-    top: -14px;
-  }
+  // & i {
+  //   width: 43px;
+  //   height: 40px;
+  //   font-size: 44px;
+  //   color: grey;
+  //   align-self: center;
+  //   position: relative;
+  //   top: -14px;
+  // }
 }
 
 //svg heart styling(icon)
@@ -481,6 +494,36 @@ svg {
   font-size: 24px;
   color: grey;
   margin-top: 10px;
+}
+
+//desktop/tablet restaruant card adjustments
+@media only screen and (min-width: 601px) {
+  .restaurants__grid {
+    padding-left: 0px;
+    margin-left: -10px;
+  }
+
+  .new-overlay {
+    left: 195px;
+  }
+
+  .card-footer {
+    padding-top: 30px;
+    padding-right: 0;
+  }
+
+  .card__description {
+    width: 70%;
+    padding-left: 0px;
+  }
+
+  svg {
+    width: 38px;
+  }
+
+  .heart-icon {
+    stroke-width: 38px;
+  }
 }
 
 //Restaurant invidvual menu css
@@ -562,7 +605,7 @@ svg {
 .menu__description {
   display:inline-block;
   width: 88%;
-  padding-left: 0px;
+  padding-left: 1px;
   padding-top: 0;
   & p {
     padding-left: 12px;
@@ -627,6 +670,41 @@ svg {
   right: 10px;
 }
 
+//desktop/tablet adjustments for individual restaurant menu and items
+@media only screen and (min-width: 601px) {
+  .restaurant__menu--header {
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  //restaurant menu applied class
+  .container__title--alt {
+    width: 60%;
+    margin-left: 0;
+  }
+
+  .restaurant__menu--card {
+    height: 100px;
+  }
+
+  .menu__description {
+    & .menu__item {
+      margin-top: 5px;
+    }
+    & .menu__ingredients {
+      margin-top: 12px;
+      margin-left: 10px;
+      padding-left: 0;
+
+    }
+  }
+
+  .check {
+    height: 100px;
+  }
+}
+
 // footer styling
 .footer__container {
   width: 100%;
@@ -636,6 +714,11 @@ svg {
   color: white;
   margin-top: -26px;
   padding-top: 20px;
+  & #footer__logo {
+    font-family: $title-font;
+    font-size: 28px;
+    width: 100%;
+  }
   & ul {
     width: 100%;
     font-family: $text-font;
@@ -660,8 +743,12 @@ svg {
   }
 }
 
-#footer__logo {
-  font-family: $title-font;
-  font-size: 28px;
-  width: 100%;
+//desktop/tablet adjustments for footer
+@media only screen and (min-width: 601px) {
+  .footer__container {
+    & #footer__logo {
+      padding-bottom: 20px;
+    }
+  }
 }
+
